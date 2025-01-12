@@ -1,0 +1,71 @@
+* yt-process
+
+Process YouTube videos using the =yt= and =fabric= command line tools from within Emacs.
+
+** Prerequisites
+
+Ensure you have:
+- The =yt= command line tool
+- The =fabric= command line tool
+- Emacs 27.1 or later
+
+** Installation
+
+*** Manual Installation
+
+1. Clone the repository:
+   #+begin_src bash
+   git clone https://github.com/yourusername/yt-process ~/.emacs.d/site-lisp/yt-process
+   #+end_src
+
+2. Add to your =init.el=:
+   #+begin_src elisp
+   (add-to-list 'load-path "~/.emacs.d/site-lisp/yt-process")
+   (require 'yt-process)
+   #+end_src
+
+*** Using straight.el
+
+#+begin_src elisp
+(straight-use-package
+ '(yt-process :type git :host github :repo "yourusername/yt-process"))
+#+end_src
+
+*** Using use-package
+
+#+begin_src elisp
+(use-package yt-process
+  :straight (yt-process :type git :host github :repo "yourusername/yt-process"))
+#+end_src
+
+** Usage
+
+*** Interactive Commands
+
+- =M-x yt-process-video= :: Process a YouTube video with the default pattern (summarize)
+- =M-x yt-process-video-with-pattern= :: Process a YouTube video, prompting for the pattern to use
+
+*** From Elisp
+
+#+begin_src elisp
+(yt-process-video "https://youtube.com/watch?v=xxxxx" "summarize")
+(yt-process-video "https://youtube.com/watch?v=xxxxx" "extract_wisdom")
+#+end_src
+
+*** Customization
+
+You can customize settings using =M-x customize-group RET yt-process RET=:
+
+- =yt-process-patterns= :: List of available processing patterns
+- =yt-process-default-pattern= :: Default pattern to use when not specified
+
+** Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+** License
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
